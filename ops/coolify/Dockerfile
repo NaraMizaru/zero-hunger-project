@@ -67,4 +67,4 @@ COPY ops/coolify/nginx/nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /run/nginx
 
 ENV PORT=8080
-CMD ["sh", "-c", "sh /var/www/ops/nginx/startup.sh"]
+CMD ["sh", "-c", "sh /var/www/ops/coolify/nginx/startup.sh"]
