@@ -37,7 +37,7 @@ class ManageWorkerController extends Controller
                         </button>
                     ';
                 })
-                
+
                 ->rawColumns(['profile', 'action'])
                 ->make(true);
         }
@@ -59,12 +59,12 @@ class ManageWorkerController extends Controller
                 'password' => 'required|string|min:6',
                 'profile' => 'nullable|image|max:2048'
             ]);
-    
+
             $path = null;
             if ($request->hasFile('profile')) {
                 $path = $request->file('profile')->store('profiles', 'public');
             }
-    
+
             User::create([
                 'name' => $validated['name'],
                 'username' => $validated['username'],
@@ -73,8 +73,8 @@ class ManageWorkerController extends Controller
                 'profile' => $path,
                 'role' => 'worker',
             ]);
-    
-            return redirect()->back()->with('success', 'Tasker successfully added.');
+
+            return redirect()->back()->with('success', 'Siswa successfully added.');
         } catch (ValidationException $e) {
             $firstError = collect($e->validator->errors()->all())->first();
             return redirect()->back()->with('error', $firstError);
@@ -103,7 +103,7 @@ class ManageWorkerController extends Controller
         $user->password = $request->filled('password') ? Hash::make($validated['password']) : $user->password;
         $user->save();
 
-        return response()->json(['success' => 'Worker successfully updated.']);
+        return response()->json(['success' => 'Siswa successfully updated.']);
     }
 
     public function delete($id)

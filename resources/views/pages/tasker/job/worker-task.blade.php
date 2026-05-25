@@ -24,7 +24,7 @@
                 @include('components.navbar')
                 <div class="card text-second p-3 border-0 shadow-lg mt-4">
                     <div class="d-flex justify-content-between">
-                        <h4>Add worker for {{ $task->title }}</h4>
+                        <h4>Add siswa for {{ $task->title }}</h4>
                     </div>
                     <form action="{{ route('store.job.worker') }}" method="POST" enctype="multipart/form-data">
                         @csrf

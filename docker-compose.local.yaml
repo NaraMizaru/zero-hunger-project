@@ -1,0 +1,59 @@
+services:
+  mysql:
+    restart: always
+    container_name: zero-hunger-project.mysql.local
+    image: mysql:8.2
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: zero-hunger-project
+    volumes:
+      - 'mysql:/var/lib/mysql'
+    networks:
+      - zero-hunger-project
+    healthcheck:
+      test: [
+        "CMD",
+        "mysqladmin",
+        "ping",
+        "-p${DB_PASSWORD}"
+      ]
+      retries: 3
+      timeout: 5s
+
+  redis:
+    restart: always
+    container_name: zero-hunger-project.redis.local
+    image: redis:6.0
+    networks:
+      - zero-hunger-project
+    volumes:
+      - 'redis:/data'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+
+  web:
+    restart: always
+    container_name: zero-hunger-project.web.local
+    build:
+      context: .
+      dockerfile: ops/local/Dockerfile
+    image: ${DOCKER_REGISTRY}/web:${IMAGE_VERSION}
+    user: "${UID:-1000}:${GID:-1000}"
+    ports:
+      - "${DOCKER_PORT:-127.0.0.1:8000}:8000"
+    volumes:
+      - ".:/opt/apps/zero-hunger-project"
+    depends_on:
+      - mysql
+    networks:
+      - zero-hunger-project
+networks:
+  zero-hunger-project:
+    name: zero-hunger-project.local
+    driver: bridge
+
+volumes:
+  mysql:
+    name: zero-hunger-project.mysql.local
+  redis:
+    name: zero-hunger-project.redis.local

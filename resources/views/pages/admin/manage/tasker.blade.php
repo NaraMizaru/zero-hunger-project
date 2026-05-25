@@ -24,9 +24,9 @@
                 @include('components.navbar')
                 <div class="card text-second p-3 border-0 shadow-lg mt-4">
                     <div class="d-flex justify-content-between">
-                        <h4>Manage Tasker</h4>
+                        <h4>Manage Guru</h4>
                         <button data-bs-toggle="modal" data-bs-target="#addTaskerModal" class="btn bg-brown text-white"><i
-                                class="fa-regular fa-plus me-1"></i> Add Tasker</button>
+                                class="fa-regular fa-plus me-1"></i> Add Guru</button>
                     </div>
                     <hr>
                     <div class="table-responsive">
@@ -52,7 +52,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-second">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addTaskerModalLabel">Add Tasker</h1>
+                    <h1 class="modal-title fs-5" id="addTaskerModalLabel">Add Guru</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('store.tasker') }}" method="POST" enctype="multipart/form-data">
@@ -91,7 +91,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-second">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editTaskerModalLabel">Edit Tasker</h1>
+                    <h1 class="modal-title fs-5" id="editTaskerModalLabel">Edit Guru</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="editTaskerForm" method="POST" enctype="multipart/form-data">
@@ -273,11 +273,11 @@
                         },
                         error: function(xhr) {
                             console.error(xhr.responseText);
-                            Swal.fire('Oops!', 'Gagal menghapus tasker.', 'error');
+                            Swal.fire('Oops!', 'Gagal menghapus guru.', 'error');
                         }
                     });
                 }
             });
-        }        
+        }
     </script>
 @endpush

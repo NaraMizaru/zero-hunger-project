@@ -26,7 +26,7 @@
                     <div class="col-xl-3 col-12">
                         <a href="{{ route('manage.tasker') }}" class="text-decoration-none">
                             <div class="card card-badge p-3 border-0 shadow-lg text-white bk-brown">
-                                <h3>Total Tasker : </h3>
+                                <h3>Total Guru : </h3>
                                 <h1><i class="fa-light fa-user-tie me-2"></i> {{ $taskerCount }}</h1>
                             </div>
                         </a>
@@ -34,7 +34,7 @@
                     <div class="col-xl-3 col-12 mt-xl-0 mt-3">
                         <a href="{{ route('manage.worker') }}" class="text-decoration-none">
                             <div class="card card-badge p-3 border-0 shadow-lg text-white bk-brown">
-                                <h3>Total Worker : </h3>
+                                <h3>Total Siswa : </h3>
                                 <h1><i class="fa-light fa-user-helmet-safety me-2"></i> {{ $workerCount }}</h1>
                             </div>
                         </a>

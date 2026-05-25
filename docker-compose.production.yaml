@@ -1,0 +1,70 @@
+services:
+  web:
+    container_name: zero-hunger-project.web.production
+    image: ${DOCKER_REGISTRY}/web:${IMAGE_VERSION}
+    build:
+      context: .
+      dockerfile: ops/production/Dockerfile
+      target: web
+    restart: always
+    ports:
+      - "${DOCKER_PORT:-127.0.0.1:8000}:80"
+    volumes:
+      - .:/opt/apps/zero-hunger-project:ro
+    depends_on:
+      - fpm
+    networks:
+      - zero-hunger-project
+
+  fpm:
+    container_name: zero-hunger-project.fpm.production
+    image: ${DOCKER_REGISTRY}/fpm:${IMAGE_VERSION}
+    build:
+      context: .
+      dockerfile: ops/production/Dockerfile
+      target: fpm
+    restart: always
+    volumes:
+      - .:/opt/apps/zero-hunger-project
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - zero-hunger-project
+
+  mysql:
+    container_name: zero-hunger-project.mysql.production
+    image: mysql:8.2
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: zero-hunger-project
+    command: >
+      --max_connections=500
+      --innodb_buffer_pool_size=4096M
+      --innodb_log_file_size=256M
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - zero-hunger-project
+
+  redis:
+    container_name: zero-hunger-project.redis.production
+    image: redis:6.0
+    restart: always
+    volumes:
+      - redis:/data
+    networks:
+      - zero-hunger-project
+
+networks:
+  zero-hunger-project:
+    driver: bridge
+
+volumes:
+  mysql:
+    name: zero-hunger-project.mysql.production
+  redis:
+    name: zero-hunger-project.redis.production

@@ -121,7 +121,7 @@ class ManageJobController extends Controller
                 ->exists();
 
             if ($exists) {
-                return redirect()->back()->with('error', 'Worker sudah terdaftar pada task ini.');
+                return redirect()->back()->with('error', 'Siswa sudah terdaftar pada task ini.');
             }
 
             // Simpan jika belum ada
@@ -135,7 +135,7 @@ class ManageJobController extends Controller
             $worker = User::find($validated['worker_id']);
             $worker->notify(new TaskAssignedNotification($task));
 
-            return redirect()->back()->with('success', 'Worker berhasil ditambahkan.');
+            return redirect()->back()->with('success', 'Siswa berhasil ditambahkan.');
         } catch (ValidationException $e) {
             $firstError = collect($e->validator->errors()->all())->first();
             return redirect()->back()->with('error', $firstError);
@@ -147,6 +147,6 @@ class ManageJobController extends Controller
         $worker = TaskWorker::find($id);
         $worker->delete();
 
-        return redirect()->back()->with('success', 'Worker successfully removed.');
+        return redirect()->back()->with('success', 'Siswa successfully removed.');
     }
 }

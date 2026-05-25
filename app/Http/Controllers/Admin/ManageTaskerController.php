@@ -76,7 +76,7 @@ class ManageTaskerController extends Controller
                 'role' => 'tasker',
             ]);
 
-            return redirect()->back()->with('success', 'Tasker successfully added.');
+            return redirect()->back()->with('success', 'Guru successfully added.');
         } catch (ValidationException $e) {
             $firstError = collect($e->validator->errors()->all())->first();
             return redirect()->back()->with('error', $firstError);
@@ -105,7 +105,7 @@ class ManageTaskerController extends Controller
         $user->password = $request->filled('password') ? Hash::make($validated['password']) : $user->password;
         $user->save();
 
-        return response()->json(['success' => 'Tasker successfully updated.']);
+        return response()->json(['success' => 'Guru successfully updated.']);
     }
 
     public function delete($id)

@@ -17,12 +17,12 @@
             <small class="text-second ms-1 mb-1">Manage</small>
             <li class="nav-item {{ request()->routeIs('manage.tasker') ? 'active-nav-link' : '' }}">
                 <a href="{{ route('manage.tasker') }}" class="nav-link text-second">
-                    <i class="fa-duotone fa-regular fa-user-tie me-2"></i> Tasker
+                    <i class="fa-duotone fa-regular fa-user-tie me-2"></i> Guru
                 </a>
             </li>
             <li class="nav-item {{ request()->routeIs('manage.worker') ? 'active-nav-link' : '' }}">
                 <a href="{{ route('manage.worker') }}" class="nav-link text-second">
-                    <i class="fa-regular fa-user-helmet-safety me-2"></i> Worker
+                    <i class="fa-regular fa-user-helmet-safety me-2"></i> Siswa
                 </a>
             </li>
         @endif

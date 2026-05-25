@@ -1,6 +1,6 @@
 <nav class="navbar bg-white w-100 shadow-lg rounded-3 navbar-expand-xl bg-body-tertiary">
     <div class="container-fluid">
-        
+
         <a class="navbar-brand text-second ms-2">Hallo, {{ $user->name }} </a>
         <div class="d-flex d-block d-xl-none">
             <li class="nav-item dropdown me-2 d-flex align-items-center">
@@ -120,12 +120,12 @@
                     <small class="text-second ms-1 mb-1">Manage</small>
                     <li class="nav-item {{ request()->routeIs('manage.tasker') ? 'active-nav-link' : '' }}">
                         <a href="{{ route('manage.tasker') }}" class="nav-link ps-3 text-second">
-                            <i class="fa-duotone fa-regular fa-user-tie me-2"></i> Tasker
+                            <i class="fa-duotone fa-regular fa-user-tie me-2"></i> Siswa
                         </a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('manage.worker') ? 'active-nav-link' : '' }}">
                         <a href="{{ route('manage.worker') }}" class="nav-link ps-3 text-second">
-                            <i class="fa-regular fa-user-helmet-safety me-2"></i> Worker
+                            <i class="fa-regular fa-user-helmet-safety me-2"></i> Guru
                         </a>
                     </li>
                 @endif

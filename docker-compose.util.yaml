@@ -1,0 +1,17 @@
+services:
+  phpmyadmin:
+    restart: always
+    container_name: ${DOCKER_NAME:-zero-hunger-project}.phpmyadmin
+    image: phpmyadmin/phpmyadmin:5.2.2
+    environment:
+      PMA_HOST: mysql
+      PMA_DB: zero-hunger-project
+      PMA_USER: root
+      PMA_PASSWORD: root
+      PMA_PORT: 3306
+    links:
+      - mysql
+    ports:
+      - "127.0.0.1:8081:80"
+    networks:
+      - zero-hunger-project

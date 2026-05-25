@@ -24,9 +24,9 @@
                 @include('components.navbar')
                 <div class="card text-second p-3 border-0 shadow-lg mt-4">
                     <div class="d-flex justify-content-between">
-                        <h4>Manage Worker</h4>
+                        <h4>Manage Siswa</h4>
                         <button data-bs-toggle="modal" data-bs-target="#addWorkerModal" class="btn bg-brown text-white"><i
-                                class="fa-regular fa-plus me-1"></i> Add Worker</button>
+                                class="fa-regular fa-plus me-1"></i> Add Siswa</button>
                     </div>
                     <hr>
                     <div class="table-responsive">
@@ -52,7 +52,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-second">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addWorkerModalLabel">Add Worker</h1>
+                    <h1 class="modal-title fs-5" id="addWorkerModalLabel">Add Siswa</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('store.worker') }}" method="POST" enctype="multipart/form-data">
@@ -91,7 +91,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-second">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editWorkerModalLabel">Edit Worker</h1>
+                    <h1 class="modal-title fs-5" id="editWorkerModalLabel">Edit Siswa</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="editWorkerForm" method="POST" enctype="multipart/form-data">
@@ -273,7 +273,7 @@
                         },
                         error: function(xhr) {
                             console.error(xhr.responseText);
-                            Swal.fire('Oops!', 'Gagal menghapus worker.', 'error');
+                            Swal.fire('Oops!', 'Gagal menghapus siswa.', 'error');
                         }
                     });
                 }
