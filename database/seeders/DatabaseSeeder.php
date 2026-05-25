@@ -22,19 +22,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'tasker',
-            'username' => 'tasker',
-            'role' => 'tasker',
+            'name' => 'guru',
+            'username' => 'guru',
+            'role' => 'guru',
             'phone_number' => '089519094253',
-            'password' => bcrypt('tasker123'),
+            'password' => bcrypt('guru123'),
         ]);
 
         User::create([
-            'name' => 'worker',
-            'username' => 'worker',
-            'role' => 'worker',
+            'name' => 'siswa',
+            'username' => 'siswa',
+            'role' => 'siswa',
             'phone_number' => '089519094253',
-            'password' => bcrypt('worker123'),
+            'password' => bcrypt('siswa123'),
         ]);
     }
 }
