@@ -58,7 +58,7 @@ class ManageJobController extends Controller
                 'title' => $validated['title'],
                 'description' => $validated['description'],
                 'image' => $path,
-                'video' => $validated['video'],
+                'video' => $this->convertYoutubeToEmbed($validated['video']),
                 'deadline' => $validated['deadline'],
                 'repetition' => $validated['repetition'],
                 'created_by' => $user->id,
@@ -93,6 +93,7 @@ class ManageJobController extends Controller
             $validated['image'] = $imagePath;
         }
 
+        $validated['video'] = $this->convertYoutubeToEmbed($validated['video']);
         $task->update($validated);
 
         return redirect()->back()->with('success', 'Task updated successfully!');
@@ -148,5 +149,18 @@ class ManageJobController extends Controller
         $worker->delete();
 
         return redirect()->back()->with('success', 'Siswa successfully removed.');
+    }
+
+    private function convertYoutubeToEmbed($url)
+    {
+        preg_match(
+            '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\?\n]+)/',
+            $url,
+            $matches
+        );
+
+        return isset($matches[1])
+            ? 'https://www.youtube.com/embed/' . $matches[1]
+            : null;
     }
 }

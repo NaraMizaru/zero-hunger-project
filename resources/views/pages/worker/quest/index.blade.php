@@ -58,7 +58,7 @@
                         <div class="card border-0 shadow p-3">
                             <h4>Video Tutorial</h4>
                             <div style="background-color: #3D0A05; height: 1px;" class="mt-2 mb-3"></div>
-                            <iframe width="100%" height="315" src="{{ $task->video }}" frameborder="0"
+                            <iframe width="100%" height="315" src="{{ $task->video  }}" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                         </div>
